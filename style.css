@@ -1,0 +1,9 @@
+.hide::before {
+    content: "+";
+}
+.show::before {
+    content: "-";
+}
+li{
+    display: block;
+}
