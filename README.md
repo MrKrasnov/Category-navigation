@@ -1,2 +1,2 @@
 # PRtreelist
- Навигация на JavaScript
+Navigation on JavaScript

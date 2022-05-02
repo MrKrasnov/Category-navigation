@@ -1,29 +1,26 @@
 const treeID = document.getElementById('tree');
-// все елементы li
 const liall = treeID.querySelectorAll('li');
-// перебор li
-for(let li of liall){
-    // оборачиваем елемент тегом span
+
+for (let li of liall) {
     let span = document.createElement('span')
-    //добавляем ему класс
     span.classList.add('show');
+
     li.prepend(span);
     span.append(span.nextSibling)
-    // закончили добавление span всем li
 }
 
 treeID.onclick = function (event) {
-    // проверка по какому кликнуто теге
-    console.log(event.target.tagName);
+    let childrenUL = event.target.parentNode.querySelector('ul');
+
     if (event.target.tagName != 'SPAN') return;
-    // получаем родителя
-    let childrenContainer = event.target.parentNode.querySelector('ul');
-    // проверка существование чайлдконтейнера
-    if (!childrenContainer) return;
-    // скрываем елемент 
-    childrenContainer.hidden = !childrenContainer.hidden;
-    // удаление класса show или наобород удаление hide
-    if (childrenContainer.hidden) {
+    if (!childrenUL) return;
+
+    toogle(childrenUL, event);
+}
+
+function toogle(ul, event) {
+    ul.hidden = !ul.hidden;
+    if (ul.hidden) {
         event.target.classList.add('hide');
         event.target.classList.remove('show');
     }
